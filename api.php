@@ -137,6 +137,7 @@ switch ($type) {
         } else {
             $data["error"] = "Parâmetros inválidos para Livraria.";
         }
+        
         break;
 
     default:
