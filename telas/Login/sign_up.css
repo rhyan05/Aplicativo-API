@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(262deg, rgba(47, 57, 164, 0.97) 30%, rgba(181, 55, 196, 1) 70%);
+  margin: 0;
+}
+
+.container {
+  width: 80%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 5px solid rgba(136, 10, 209, 0.18);
+  max-height: 95vh; 
+  margin: 2rem 0; 
+  overflow-y: auto; 
+}
+
+.form-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; 
+}
+
+h1 {
+  color: aliceblue;
+  font-size: 1.5rem; 
+}
+
+.login-button {
+  display: flex; 
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.login-button button {
+  border: none;
+  background-color: rgb(100, 29, 141);
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button button:hover {
+  background-color: rgba(66, 58, 218, 0.707);
+}
+
+.login-button a {
+  text-decoration: none;
+  font-weight: 500;
+  color: aliceblue;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.1rem;
+}
+
+.half-width {
+  width: 48%;
+}
+
+input {
+  margin: 0.6rem 0;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px #0000001c;
+  font-size: 0.9rem;
+}
+
+input:hover {
+  background-color: rgb(255, 241, 251);
+}
+
+input:focus-visible {
+  outline: 3px solid rgb(101, 23, 120);
+}
+
+label, h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #000000;
+  margin-left: 3px;
+}
+
+.gender-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.gender-input {
+  display: flex;
+  align-items: center;
+}
+
+.gender-input label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffffc0;
+}
+
+.btn-cadastro button {
+  width: 100%;
+  margin-top: 2.5rem;
+  border: none;
+  background: linear-gradient(262deg, rgba(249, 0, 172, 0.978) 21%, rgba(181, 55, 196, 1) 70%);
+  padding: 0.62rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-cadastro button:hover {
+  background-color: rgb(140, 196, 55);
+}
+
+.btn-cadastro a {
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .form-title {
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+
+  h1 {
+    font-size: 1.2rem; 
+    text-align: center;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .login-button {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .input-box {
+    width: 100%;
+  }
+}
+
+@media screen and (max-height: 756px) {
+  .container {
+    max-height: 90vh; 
+    overflow-y: auto; 
+  }
+}
