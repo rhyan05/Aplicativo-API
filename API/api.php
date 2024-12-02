@@ -4,6 +4,7 @@ require_once 'tabelas/Autor.php';
 require_once 'tabelas/Livro.php';
 require_once 'tabelas/Estoque.php';
 require_once 'tabelas/Livraria.php';
+require_once 'tabelas/Usuario.php';  // Incluindo a classe Usuario
 
 header("Content-Type: application/json");
 
@@ -17,6 +18,7 @@ $id_autor = $_REQUEST['id_autor'] ?? null;
 $data_lancamento = $_REQUEST['data_lancamento'] ?? null;
 $id_livro = $_REQUEST['id_livro'] ?? null;
 $id_estoque = $_REQUEST['id_estoque'] ?? null;
+$email = $_REQUEST['email'] ?? null;  // Para o caso de usuários
 
 $data = [];
 
@@ -137,7 +139,30 @@ switch ($type) {
         } else {
             $data["error"] = "Parâmetros inválidos para Livraria.";
         }
+        break;
+
+    case 'usuario':  // Adicionando a parte dos usuários
+        $usuario = new Usuario();
+        $usuario->setID($id);
+        $usuario->setNome($name);
+        $usuario->setEmail($email);
+        $usuario->setStatus($status);
         
+        if ($fn === "create" && $name !== null && $email !== null) {
+            $data["usuario"] = $usuario->create();
+        } elseif ($fn === "read") {
+            if ($id > 0) {
+                $data["usuario"] = $usuario->readByID(); 
+            } else {
+                $data["usuario"] = $usuario->read(); 
+            }
+        } elseif ($fn === "update" && $id > 0 && $name !== null && $email !== null) {
+            $data["usuario"] = $usuario->update();
+        } elseif ($fn === "delete" && $id > 0) {
+            $data["usuario"] = $usuario->delete();
+        } else {
+            $data["error"] = "Parâmetros inválidos para Usuário.";
+        }
         break;
 
     default:

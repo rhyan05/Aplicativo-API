@@ -41,3 +41,10 @@ CREATE TABLE Livraria (
     FOREIGN KEY (id_estoque) REFERENCES Estoque(id_estoque),
     FOREIGN KEY (id_livro) REFERENCES Livro(id_livro)
 );
+CREATE TABLE `registration` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `category` varchar(255) NOT NULL,
+)

@@ -1,18 +1,37 @@
 <?php
-// verify_api.php (Verificação do tipo de usuário e redirecionamento)
 session_start();
 
-if (isset($_SESSION['categoria'])) {
-    $categoria = $_SESSION['categoria'];
+// Função para retornar uma resposta JSON
+function sendResponse($status, $message, $data = null) {
+    header('Content-Type: application/json');
+    echo json_encode([
+        'status' => $status,
+        'message' => $message,
+        'data' => $data
+    ]);
+    exit;
+}
 
-    if ($categoria == 'comum') {
-        header("Location: ../../telas/user/home_user.php");  // Redireciona para a página do usuário comum
-    } elseif ($categoria == 'admin') {
-        header("Location: ../../telas/admin/home_admin.php");  // Redireciona para a página de administração
+// Verificar se o usuário está logado
+if (!isset($_SESSION['email'])) {
+    sendResponse('error', 'Usuário não logado', null);
+}
+
+// Verificar a categoria do usuário
+if (isset($_SESSION['category'])) {
+    $category = $_SESSION['category'];
+
+    // Redirecionar de acordo com a categoria
+    if ($category == 'comum') {
+        sendResponse('success', 'Usuário comum', ['redirect_url' => '../user/home_user.php']);
+    } elseif ($category == 'admin') {
+        sendResponse('success', 'Admin', ['redirect_url' => '../admin/home_admin.php']);
+    } elseif ($category == 'seller') {
+        sendResponse('success', 'Vendedor', ['redirect_url' => '../Vendedor/home_vendedor.php']);
     } else {
-        echo "Categoria de usuário inválida.";
+        sendResponse('error', 'Categoria não existe', null);
     }
 } else {
-    echo "Sessão não iniciada. Faça login.";
+    sendResponse('error', 'Categoria não definida', null);
 }
 ?>

@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <form action="#" method="post">
+      <form action="signup.php" method="post">
         <div class="input-group">
           <div class="input-box">
             <label for="nome">Nome:</label>
@@ -37,9 +37,8 @@
           </div>
         </div>
 
-
         <div class="btn-cadastro">
-          <button type="submit"><a href="#">Cadastrar</a></button>
+          <button type="submit">Cadastrar</button>
         </div>
       </form>
     </div>
